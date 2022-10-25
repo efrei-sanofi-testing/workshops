@@ -1,5 +1,5 @@
 // Détermine qui gagne au pierre feuille ciseaux
-// exemple : node pfc.js P F
+// exemple : node 2-pfc.js P F
 
 
 if(process.argv[2] === "P") {
