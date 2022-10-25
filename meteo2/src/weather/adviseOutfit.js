@@ -1,6 +1,7 @@
 import { getWeather } from "./weather";
 
 export function adviseOutfit() {
+  // coucou
   const { raining, temperature } = getWeather();
   if (raining) {
     if (temperature < 10) {

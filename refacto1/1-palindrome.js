@@ -1,4 +1,15 @@
 // Détermine si le paramètre passé est un palindrome
 // ex: "node 1-palindrome.js aha"
 
-console.log("Ceci " + (process.argv[2].split("").reverse('').join("") === process.argv[2] ? "est" : "n'est pas") + " un palindrome")
+function printPalindromeStatus(word) {
+  const reversedWord = word.split("").reverse("").join("");
+
+  if (reversedWord === word) {
+    console.log("Ceci est un palindrome");
+  } else {
+    console.log("Ceci n'est pas un palindrome");
+  }
+}
+
+const parameter = process.argv[2];
+printPalindromeStatus(parameter);

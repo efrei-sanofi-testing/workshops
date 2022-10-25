@@ -1,10 +1,19 @@
-const fs = require('fs');
+const fs = require("fs");
 
-let todos = fs.readFileSync('./todos.txt', 'utf8');
-todos = todos.split("\n").filter(Boolean)
+function listTodos() {
+  let todos = fs.readFileSync("./todos.txt", "utf8");
+  let sortie = "";
+  todos = todos.split("\n").filter(Boolean);
 
-console.log(`Vous avez ${todos.length} todo${todos.length === 1 ? "":"s"} \n`)
+  sortie += `Vous avez ${todos.length} todo${todos.length === 1 ? "" : "s"}\n`;
+  sortie += "\n";
+  for (const todo of todos) {
+    sortie += `[ ] ${todo}\n`;
+  }
 
-for (const todo of todos) {
-    console.log(`[ ] ${todo}`)
+  return sortie;
 }
+
+console.log(listTodos());
+
+module.exports = { listTodos };

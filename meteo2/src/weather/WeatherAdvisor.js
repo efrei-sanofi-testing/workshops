@@ -6,6 +6,11 @@ export function WeatherAdvisor() {
   const { raining, temperature } = getWeather();
   const [showFahrenheit, setShowFahrenheit] = useState(false);
   const temperatureInCurrentUnit = temperature * (showFahrenheit ? 10 : 1);
+
+  function terribleCode(a, b) {
+    if (true) console.log("haha");
+  }
+
   return (
     <div>
       <h1>

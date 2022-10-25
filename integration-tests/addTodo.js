@@ -1,5 +1,11 @@
-const fs = require('fs');
+const fs = require("fs");
 
-const todo = process.argv[2] + "\n";
+const arg = process.argv[2];
 
-fs.writeFileSync('./todos.txt', todo, { flag: 'a+' })
+function addTodo(todo) {
+  fs.writeFileSync("./todos.txt", todo + "\n", { flag: "a+" });
+}
+
+if (arg) addTodo(arg);
+
+module.exports = { addTodo };
