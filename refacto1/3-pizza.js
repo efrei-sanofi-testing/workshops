@@ -12,32 +12,36 @@ Return an array of customers that are eligible for a free pizza.
 Source : https://edabit.com/challenge/raWPf5nZyRKEEH6ZQ
 */
 
-let ClientHistories = {
+function clientHistAllowGiftedPizza(client) {
+  let nbValidPizza = ClientsHistories[client];
+  nbValidPizza = nbValidPizza.filter(
+    (pizzaPrice) => pizzaPrice >= minPizzaPrice
+  );
+  nbValidPizza = nbValidPizza.length;
+
+  return nbValidPizza >= 3 ? true : false;
+}
+
+let ClientsHistories = {
   // clients
   "Spider-Man": [5, 17, 30, 33, 40, 22, 26, 10, 11, 45],
   Batman: [22, 30, 11, 17, 15, 52, 27, 12],
+  Ironman: [2, 3, 1, 7, 15, 2, 7, 12],
+  Tor: [22, 30, 11, 7, 15, 2, 27, 12],
 };
-
-const nbPizza = 3;
-const minPrice = 10;
+let y = "";
+const quotaPizza = 3;
+const minPizzaPrice = 10;
 let arr = [];
+let giftedClients = Object.keys(ClientsHistories).reduce(
+  (eligibleClients, client) => {
+    eligibleClients[client] = clientHistAllowGiftedPizza(client);
+    return eligibleClients;
+  },
+  {}
+);
+console.log("giftedClients", giftedClients);
 
-for (let i = 0; i < Object.entries(ClientHistories).length; i++) {
-  // tant que i est plus petit que la longeur de l'objet avec les clients
-
-  let cnt = 0;
-  for (let j = 0; j < Object.entries(ClientHistories)[i][1].length; j++) {
-    // tant que j est plus petit que la longeur du tableau des commandes du client
-    if (Object.entries(ClientHistories)[i][1][j] >= y) {
-      // si la pizza est valide
-      cnt++;
-      console.log("pizza valide!");
-    }
-  }
-  console.log("fin");
-  if (cnt > nbPizza - 1)
-    arr[arr.length] = Object.entries(ClientHistories)[i][0]; // si cnt est supérieur à n + 1, pizza gratuite
-}
-
-arr.sort();
-console.log(arr);
+giftedClients = Object.keys(giftedClients).filter((it) => giftedClients[it]);
+giftedClients.sort();
+console.log(giftedClients);

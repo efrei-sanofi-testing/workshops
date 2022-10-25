@@ -1,2 +1,3 @@
 New task
-manger
+Faketask
+bad task
